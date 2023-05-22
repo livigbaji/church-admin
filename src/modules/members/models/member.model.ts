@@ -13,16 +13,20 @@ export class Member {
   @ApiProperty()
   @Prop({
     required: true,
+    text: true,
   })
   firstName: string;
 
   @ApiProperty()
-  @Prop()
+  @Prop({
+    text: true,
+  })
   middleName: string;
 
   @ApiProperty()
   @Prop({
     required: true,
+    text: true,
   })
   lastName: string;
 
@@ -103,6 +107,7 @@ export class Member {
   @Prop({
     type: String,
     required: true,
+    text: true,
   })
   address: string;
 
@@ -140,6 +145,7 @@ export class Member {
   @Prop({
     type: String,
     required: true,
+    text: true,
   })
   nextofKin: string;
 
@@ -154,6 +160,7 @@ export class Member {
   @Prop({
     type: String,
     required: true,
+    text: true,
   })
   village: string;
 
@@ -161,6 +168,7 @@ export class Member {
   @Prop({
     type: String,
     required: true,
+    text: true,
   })
   homeTown: string;
 
@@ -168,6 +176,7 @@ export class Member {
   @Prop({
     type: String,
     required: true,
+    text: true,
   })
   lga: string;
 
@@ -175,6 +184,7 @@ export class Member {
   @Prop({
     type: String,
     required: true,
+    text: true,
   })
   state: string;
 }
