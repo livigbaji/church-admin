@@ -17,3 +17,8 @@ export class MemberListResponse {
   })
   members: Member[];
 }
+
+export enum UnitMembershipStatus {
+  INTERESTED = 'INTERESTED',
+  SERVING = 'SERVING',
+}

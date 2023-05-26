@@ -5,12 +5,19 @@ import { LeadershipService } from './services/leadership.service';
 import { UnitsService } from './services/units.service';
 import { UnitsController } from './controllers/units.controller';
 import { LeadershipController } from './controllers/leadership.controller';
+import { Unit, UnitSchema } from './models/unit.model';
+import { LeaderSchema, Leadership } from './models/leadership.model';
+import { MembersService } from './services/members.service';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Member.name, schema: MemberSchema }]),
+    MongooseModule.forFeature([
+      { name: Member.name, schema: MemberSchema },
+      { name: Unit.name, schema: UnitSchema },
+      { name: Leadership.name, schema: LeaderSchema },
+    ]),
   ],
-  providers: [LeadershipService, UnitsService],
+  providers: [LeadershipService, UnitsService, MembersService],
   controllers: [UnitsController, LeadershipController],
 })
 export class MembersModule {}

@@ -1,9 +1,40 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-import { Document } from 'mongoose';
-import { Gender, MaritalStatus } from 'src/types';
+import { Document, Types } from 'mongoose';
+import { Gender, MaritalStatus, UnitMembershipStatus } from 'src/types';
 
 export type MemberDocument = Member & Document;
+
+@Schema({
+  versionKey: undefined,
+  _id: false,
+})
+export class UnitMembership {
+  @Prop({
+    type: Types.ObjectId,
+    required: true,
+    ref: 'Unit',
+  })
+  unit: Types.ObjectId;
+
+  @Prop({
+    type: String,
+    enum: UnitMembershipStatus,
+  })
+  status: UnitMembershipStatus;
+
+  @Prop({
+    type: Date,
+    default: Date.now,
+  })
+  interestedAt: Date;
+
+  @Prop({
+    type: Date,
+    default: () => null,
+  })
+  startedAt: Date;
+}
 
 @Schema({
   versionKey: undefined,
@@ -187,6 +218,27 @@ export class Member {
     text: true,
   })
   state: string;
+
+  @ApiProperty({
+    type: UnitMembership,
+    isArray: true,
+  })
+  @Prop({
+    type: [UnitMembership],
+  })
+  units: UnitMembership[];
+
+  @Prop({
+    type: Boolean,
+    default: () => false,
+  })
+  deleted: boolean;
+
+  @Prop({
+    type: Date,
+    default: () => null,
+  })
+  deletedAt: Date;
 }
 
 export const MemberSchema = SchemaFactory.createForClass(Member);

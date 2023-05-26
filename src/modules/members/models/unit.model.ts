@@ -8,6 +8,30 @@ export type UnitDocument = Unit & Document;
   versionKey: undefined,
   timestamps: true,
 })
+export class UnitDesignation {
+  @Prop({
+    type: String,
+    required: true,
+  })
+  name: string;
+
+  @Prop({
+    type: String,
+    required: true,
+  })
+  description: string;
+
+  @Prop({
+    type: Number,
+    required: true,
+  })
+  idealMembers: number;
+}
+
+@Schema({
+  versionKey: undefined,
+  timestamps: true,
+})
 export class Unit {
   @ApiProperty()
   @Prop({
@@ -29,6 +53,18 @@ export class Unit {
     required: true,
   })
   responsibilities: string[];
+
+  @Prop({
+    type: [UnitDesignation],
+  })
+  designations: UnitDesignation[];
+
+  @ApiProperty()
+  @Prop({
+    type: Number,
+    required: true,
+  })
+  servingNumber: number;
 }
 
 export const UnitSchema = SchemaFactory.createForClass(Unit);
