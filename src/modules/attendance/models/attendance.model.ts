@@ -16,7 +16,9 @@ export class AttendanceDesignation {
   })
   timeIn: Date;
 
-  @ApiProperty()
+  @ApiProperty({
+    type: String,
+  })
   @Prop({
     type: Types.ObjectId,
   })

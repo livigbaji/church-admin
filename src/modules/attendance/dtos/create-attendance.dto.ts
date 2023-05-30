@@ -26,12 +26,20 @@ export class CreateAttendance {
   signInTime?: Date;
 }
 
-export class AttendanceCalendarView {
+export class AttendanceCalendar {
   @ApiProperty()
   date: string;
 
   @ApiProperty()
   members: number;
+}
+
+export class AttendanceCalendarView {
+  @ApiProperty({
+    type: AttendanceCalendar,
+    isArray: true,
+  })
+  records: AttendanceCalendar[];
 }
 
 export class AttendanceResponse {
