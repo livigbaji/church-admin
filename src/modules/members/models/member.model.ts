@@ -10,6 +10,9 @@ export type MemberDocument = Member & Document;
   _id: false,
 })
 export class UnitMembership {
+  @ApiProperty({
+    type: String,
+  })
   @Prop({
     type: Types.ObjectId,
     required: true,
@@ -17,18 +20,21 @@ export class UnitMembership {
   })
   unit: Types.ObjectId;
 
+  @ApiProperty()
   @Prop({
     type: String,
     enum: UnitMembershipStatus,
   })
   status: UnitMembershipStatus;
 
+  @ApiProperty()
   @Prop({
     type: Date,
     default: Date.now,
   })
   interestedAt: Date;
 
+  @ApiProperty()
   @Prop({
     type: Date,
     default: () => null,
@@ -231,12 +237,14 @@ export class Member {
   })
   units: UnitMembership[];
 
+  @ApiProperty()
   @Prop({
     type: Boolean,
     default: () => false,
   })
   deleted: boolean;
 
+  @ApiProperty()
   @Prop({
     type: Date,
     default: () => null,

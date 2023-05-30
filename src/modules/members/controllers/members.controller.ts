@@ -4,10 +4,12 @@ import {
   ApiBearerAuth,
   ApiCreatedResponse,
   ApiOkResponse,
+  ApiTags,
 } from '@nestjs/swagger';
-import { MemberListResponse } from 'src/types';
-import { CreateMemberDTO } from '../dtos/member.dto';
+import { CreateMemberDTO, MemberListResponse } from '../dtos/member.dto';
+import { Member } from '../models/member.model';
 
+@ApiTags('Member')
 @Controller('members')
 export class MembersController {
   constructor(private readonly membersService: MembersService) {}
@@ -32,7 +34,7 @@ export class MembersController {
 
   @Put('/:member')
   @ApiOkResponse({
-    type: MemberListResponse,
+    type: Member,
   })
   @ApiBearerAuth()
   updateMember(@Param('member') id: string, @Body() member: CreateMemberDTO) {

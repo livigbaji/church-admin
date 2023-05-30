@@ -2,11 +2,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const configService = app.get(ConfigService);
-  await app.listen(configService.get('PORT') as number);
+  app.disable('x-powered-by', 'X-Powered-By');
   const config = new DocumentBuilder()
     .setTitle('Church Admin API')
     .setDescription('Church Admin Webservice')
@@ -14,5 +15,6 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
+  await app.listen(configService.get('PORT') as number);
 }
 bootstrap();

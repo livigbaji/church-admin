@@ -8,6 +8,7 @@ import { LeadershipController } from './controllers/leadership.controller';
 import { Unit, UnitSchema } from './models/unit.model';
 import { LeaderSchema, Leadership } from './models/leadership.model';
 import { MembersService } from './services/members.service';
+import { MembersController } from './controllers/members.controller';
 
 @Module({
   imports: [
@@ -18,6 +19,6 @@ import { MembersService } from './services/members.service';
     ]),
   ],
   providers: [LeadershipService, UnitsService, MembersService],
-  controllers: [UnitsController, LeadershipController],
+  controllers: [UnitsController, LeadershipController, MembersController],
 })
 export class MembersModule {}

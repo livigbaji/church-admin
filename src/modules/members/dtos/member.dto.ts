@@ -7,18 +7,25 @@ import {
   IsString,
 } from 'class-validator';
 import { MaritalStatus, Gender } from 'src/types';
+import { Member } from '../models/member.model';
 
 export class CreateMemberDTO {
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Clarus',
+  })
   @IsString()
   @IsNotEmpty()
   firstName: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Joseph',
+  })
   @IsString()
   middleName: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Oyedepo',
+  })
   @IsString()
   @IsNotEmpty()
   lastName: string;
@@ -35,7 +42,9 @@ export class CreateMemberDTO {
   @IsEnum(Gender)
   gender: Gender;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Fantastic',
+  })
   @IsString()
   homeCell: string;
 
@@ -54,6 +63,7 @@ export class CreateMemberDTO {
   @ApiProperty({
     type: String,
     isArray: true,
+    examples: ['Driver', 'Electrician'],
   })
   @IsString({ each: true })
   occupation: string[];
@@ -65,11 +75,14 @@ export class CreateMemberDTO {
   @ApiProperty({
     isArray: true,
     type: String,
+    example: '2347012345678',
   })
   @IsPhoneNumber('NG', { each: true })
   phoneNumber: string[];
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Km. 10 Idiroko Rd, 112104, Ota, Ogun State',
+  })
   @IsString()
   @IsNotEmpty()
   address: string;
@@ -78,13 +91,16 @@ export class CreateMemberDTO {
   @IsString()
   reference: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'B.Sc',
+  })
   @IsString()
   qualification: string;
 
   @ApiProperty({
     type: String,
     isArray: true,
+    examples: ['Follow up', 'Teens'],
   })
   @IsString({ each: true })
   otherUnits: string[];
@@ -92,37 +108,58 @@ export class CreateMemberDTO {
   @ApiProperty({
     type: String,
     isArray: true,
+    examples: ['Singing', 'Dancing'],
   })
   @IsString({ each: true })
   hobbies: string[];
 
-  @ApiProperty()
-  @IsString({ each: true })
+  @ApiProperty({
+    example: 'David O. Oyedepo Jr.',
+  })
+  @IsString()
   @IsNotEmpty()
   nextofKin: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: '2347012345678',
+  })
   @IsString()
   @IsNotEmpty()
   nextOfKinNumber: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Akugom',
+  })
   @IsString()
   @IsNotEmpty()
   village: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Adim',
+  })
   @IsString()
   @IsNotEmpty()
   homeTown: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Biase',
+  })
   @IsString()
   @IsNotEmpty()
   lga: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    example: 'Cross river',
+  })
   @IsString()
   @IsNotEmpty()
   state: string;
+}
+
+export class MemberListResponse {
+  @ApiProperty({
+    type: Member,
+    isArray: true,
+  })
+  members: Member[];
 }
