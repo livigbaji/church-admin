@@ -36,6 +36,9 @@ export class UnitMembership {
   startedAt: Date;
 }
 
+export const UnitMembershipSchema =
+  SchemaFactory.createForClass(UnitMembership);
+
 @Schema({
   versionKey: undefined,
   timestamps: true,
@@ -224,7 +227,7 @@ export class Member {
     isArray: true,
   })
   @Prop({
-    type: [UnitMembership],
+    type: [UnitMembershipSchema],
   })
   units: UnitMembership[];
 

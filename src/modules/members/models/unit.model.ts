@@ -28,6 +28,9 @@ export class UnitDesignation {
   idealMembers: number;
 }
 
+export const UnitDesignationSchema =
+  SchemaFactory.createForClass(UnitDesignation);
+
 @Schema({
   versionKey: undefined,
   timestamps: true,
@@ -55,7 +58,7 @@ export class Unit {
   responsibilities: string[];
 
   @Prop({
-    type: [UnitDesignation],
+    type: [UnitDesignationSchema],
   })
   designations: UnitDesignation[];
 
