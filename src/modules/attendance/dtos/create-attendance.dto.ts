@@ -5,6 +5,7 @@ import {
   IsNotEmpty,
   IsOptional,
 } from 'class-validator';
+import { Attendance } from '../models/attendance.model';
 
 export class CreateAttendance {
   @ApiProperty()
@@ -23,4 +24,20 @@ export class CreateAttendance {
   @IsNotEmpty()
   @IsOptional()
   signInTime?: Date;
+}
+
+export class AttendanceCalendarView {
+  @ApiProperty()
+  date: string;
+
+  @ApiProperty()
+  members: number;
+}
+
+export class AttendanceResponse {
+  @ApiProperty({
+    type: Attendance,
+    isArray: true,
+  })
+  records: Attendance[];
 }

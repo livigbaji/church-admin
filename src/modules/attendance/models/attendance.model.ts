@@ -6,6 +6,29 @@ export type AttendanceDocument = Attendance & Document;
 
 @Schema({
   versionKey: undefined,
+  _id: false,
+})
+export class AttendanceDesignation {
+  @ApiProperty()
+  @Prop({
+    type: Date,
+    default: Date.now,
+  })
+  timeIn: Date;
+
+  @ApiProperty()
+  @Prop({
+    type: Types.ObjectId,
+  })
+  designation: Types.ObjectId;
+}
+
+export const AttendanceDesignationSchema = SchemaFactory.createForClass(
+  AttendanceDesignation,
+);
+
+@Schema({
+  versionKey: undefined,
   timestamps: true,
 })
 export class Attendance {
@@ -19,12 +42,13 @@ export class Attendance {
   member: Types.ObjectId;
 
   @ApiProperty({
-    type: String,
+    type: AttendanceDesignation,
+    isArray: true,
   })
   @Prop({
-    type: Types.ObjectId,
+    type: [AttendanceDesignationSchema],
   })
-  designation: Types.ObjectId;
+  designations: AttendanceDesignation[];
 
   @ApiProperty()
   @Prop({
@@ -39,6 +63,13 @@ export class Attendance {
     default: () => null,
   })
   signOutTime: Date;
+
+  @ApiProperty()
+  @Prop({
+    type: String,
+    default: () => 'default',
+  })
+  service: string;
 }
 
 export const AttendanceSchema = SchemaFactory.createForClass(Attendance);
