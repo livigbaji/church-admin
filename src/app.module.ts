@@ -5,6 +5,7 @@ import { MembersModule } from './modules/members/members.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import config from './config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AttendanceModule } from './modules/attendance/attendance.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { MongooseModule } from '@nestjs/mongoose';
         uri: configService.getOrThrow('DATABASE_URI') as string,
       }),
     }),
+    AttendanceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

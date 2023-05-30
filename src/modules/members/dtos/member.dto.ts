@@ -161,5 +161,5 @@ export class MemberListResponse {
     type: Member,
     isArray: true,
   })
-  members: Member[];
+  records: Member[];
 }

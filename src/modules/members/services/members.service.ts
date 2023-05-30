@@ -13,10 +13,12 @@ export class MembersService {
   ) {}
 
   search(search?: string) {
-    return this.memberModel.find({
-      deleted: false,
-      ...(search && { $text: { $search: search } }),
-    });
+    return this.memberModel
+      .find({
+        deleted: false,
+        ...(search && { $text: { $search: search } }),
+      })
+      .then((records) => ({ records }));
   }
 
   create(member: CreateMemberDTO) {

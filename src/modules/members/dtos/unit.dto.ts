@@ -7,6 +7,7 @@ import {
   IsPositive,
   IsString,
 } from 'class-validator';
+import { Unit, UnitDesignation } from '../models/unit.model';
 
 export class UnitDTO {
   @IsNotEmpty()
@@ -30,15 +31,34 @@ export class UnitDTO {
 }
 
 export class UnitDesignationDTO {
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   name: string;
 
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   description: string;
 
+  @ApiProperty()
   @IsPositive()
   @IsInt()
   idealMembers: number;
+}
+
+export class UnitResponse {
+  @ApiProperty({
+    type: Unit,
+    isArray: true,
+  })
+  records: Unit[];
+}
+
+export class UnitDesignationResponse {
+  @ApiProperty({
+    type: UnitDesignation,
+    isArray: true,
+  })
+  records: UnitDesignation[];
 }

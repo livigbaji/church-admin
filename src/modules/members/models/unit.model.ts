@@ -9,18 +9,21 @@ export type UnitDocument = Unit & Document;
   timestamps: true,
 })
 export class UnitDesignation {
+  @ApiProperty()
   @Prop({
     type: String,
     required: true,
   })
   name: string;
 
+  @ApiProperty()
   @Prop({
     type: String,
     required: true,
   })
   description: string;
 
+  @ApiProperty()
   @Prop({
     type: Number,
     required: true,
@@ -57,6 +60,10 @@ export class Unit {
   })
   responsibilities: string[];
 
+  @ApiProperty({
+    isArray: true,
+    type: UnitDesignation,
+  })
   @Prop({
     type: [UnitDesignationSchema],
   })

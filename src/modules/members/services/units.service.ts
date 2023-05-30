@@ -16,7 +16,7 @@ export class UnitsService {
   }
 
   list() {
-    return this.unitModel.find();
+    return this.unitModel.find().then((records) => ({ records }));
   }
 
   update(id: string, unit: UnitDTO) {
@@ -119,5 +119,23 @@ export class UnitsService {
         }
         return updated;
       });
+  }
+
+  getDesignations(search?: string) {
+    return this.unitModel
+      .aggregate([
+        ...(search
+          ? [
+              {
+                $match: {
+                  'designations.name': { $regex: search, $options: 'ig' },
+                },
+              },
+            ]
+          : []),
+        { $unwind: '$designations' },
+        { $replaceRoot: { newRoot: '$designations' } },
+      ])
+      .then((records) => ({ records }));
   }
 }
