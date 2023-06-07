@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import config from './config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AttendanceModule } from './modules/attendance/attendance.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { AttendanceModule } from './modules/attendance/attendance.module';
       }),
     }),
     AttendanceModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
