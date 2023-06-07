@@ -9,9 +9,15 @@ import {
   Post,
 } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
-import { AdminList, NewAuthDTO } from '../dtos/auth.dto';
-import { ApiOkResponse, ApiOperation } from '@nestjs/swagger';
+import { AdminList, LoggedInuser, NewAuthDTO } from '../dtos/auth.dto';
+import {
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 
+@ApiTags('Authentication and Authorization')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -19,6 +25,9 @@ export class AuthController {
   @Post('/')
   @ApiOperation({
     summary: 'Login a member with login(admin) access',
+  })
+  @ApiCreatedResponse({
+    type: LoggedInuser,
   })
   start(
     @Body() newAuth: NewAuthDTO,

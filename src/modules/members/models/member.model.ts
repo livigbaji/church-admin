@@ -237,14 +237,12 @@ export class Member {
   })
   units: UnitMembership[];
 
-  @ApiProperty()
   @Prop({
     type: Boolean,
     default: () => false,
   })
   deleted: boolean;
 
-  @ApiProperty()
   @Prop({
     type: Date,
     default: () => null,

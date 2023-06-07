@@ -1,13 +1,19 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { NewAdminDTO, NewAdminResponse } from '../dtos/admin.dto';
+import {
+  AdminListResponse,
+  NewAdminDTO,
+  NewAdminResponse,
+} from '../dtos/admin.dto';
 import { AdminService } from '../services/admin.service';
 import {
   ApiCreatedResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiTags,
 } from '@nestjs/swagger';
 import { Admin } from '../models/admin.model';
 
+@ApiTags('Administration')
 @Controller('admins')
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
@@ -26,6 +32,9 @@ export class AdminController {
   @Get('/')
   @ApiOperation({
     summary: 'List all active members with login access',
+  })
+  @ApiOkResponse({
+    type: AdminListResponse,
   })
   list() {
     return this.adminService.listAdmins();

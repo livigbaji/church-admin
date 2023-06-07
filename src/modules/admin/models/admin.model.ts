@@ -10,7 +10,10 @@ export type AdminDocument = Admin & Document;
   _id: false,
 })
 export class Admin {
-  @ApiProperty()
+  @ApiProperty({
+    type: String,
+    format: 'mongo',
+  })
   @Prop({
     type: Types.ObjectId,
     required: true,

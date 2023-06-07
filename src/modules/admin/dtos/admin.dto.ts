@@ -27,3 +27,16 @@ export class NewAdminResponse {
   @ApiProperty()
   url: string;
 }
+
+export class AdminListEntry {
+  @ApiProperty()
+  name: string;
+}
+
+export class AdminListResponse {
+  @ApiProperty({
+    type: AdminListEntry,
+    isArray: true,
+  })
+  data: AdminListEntry[];
+}
