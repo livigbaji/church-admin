@@ -7,6 +7,7 @@ import config from './config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AttendanceModule } from './modules/attendance/attendance.module';
 import { AdminModule } from './modules/admin/admin.module';
+import { FinancesModule } from './modules/finances/finances.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { AdminModule } from './modules/admin/admin.module';
     }),
     AttendanceModule,
     AdminModule,
+    FinancesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

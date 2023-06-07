@@ -72,6 +72,12 @@ export class Attendance {
     default: () => 'default',
   })
   service: string;
+
+  @Prop({
+    type: Types.ObjectId,
+    default: () => null,
+  })
+  signedInBy: Types.ObjectId;
 }
 
 export const AttendanceSchema = SchemaFactory.createForClass(Attendance);
