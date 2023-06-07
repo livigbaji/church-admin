@@ -29,6 +29,12 @@ export class MembersService {
     return this.memberModel.findById(member);
   }
 
+  findByPhone(phone: string) {
+    return this.memberModel.findOne({
+      phoneNumber: phone,
+    });
+  }
+
   update(id: string, member: Partial<Member>) {
     return this.memberModel.findOneAndUpdate(
       {

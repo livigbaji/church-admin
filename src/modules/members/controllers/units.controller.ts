@@ -15,7 +15,12 @@ import {
   UnitDesignationResponse,
   UnitResponse,
 } from '../dtos/unit.dto';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiQuery,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Unit } from '../models/unit.model';
 
 @ApiTags('Unit')
@@ -43,7 +48,12 @@ export class UnitsController {
   @ApiOkResponse({
     type: UnitDesignationResponse,
   })
-  getDesignations(@Query('search') search: string) {
+  @ApiQuery({
+    name: 'search',
+    type: String,
+    required: false,
+  })
+  getDesignations(@Query('search') search?: string) {
     return this.unitService.getDesignations(search);
   }
 

@@ -20,5 +20,6 @@ import { MembersController } from './controllers/members.controller';
   ],
   providers: [LeadershipService, UnitsService, MembersService],
   controllers: [UnitsController, LeadershipController, MembersController],
+  exports: [MembersService],
 })
 export class MembersModule {}
