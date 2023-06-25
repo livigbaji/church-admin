@@ -42,7 +42,6 @@ export class Leadership {
   @Prop({
     type: String,
     default: () => null,
-    required: true,
   })
   unit: string;
 

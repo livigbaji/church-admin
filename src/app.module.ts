@@ -15,7 +15,6 @@ import { FinancesModule } from './modules/finances/finances.module';
       isGlobal: true,
       load: [config],
     }),
-    MembersModule,
     MongooseModule.forRootAsync({
       inject: [ConfigService],
       imports: [ConfigModule],
@@ -26,6 +25,7 @@ import { FinancesModule } from './modules/finances/finances.module';
     AttendanceModule,
     AdminModule,
     FinancesModule,
+    MembersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
