@@ -2,7 +2,7 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://www.kindpng.com/imgv/ihhRmmR_winners-chapel-logo-png-transparent-png" width="120" alt="Nest Logo" /></a>
 </p>
 
-
+[![Build, push, and deploy](https://github.com/bestbrain10/church-admin/actions/workflows/deploy.yaml/badge.svg)](https://github.com/bestbrain10/church-admin/actions/workflows/deploy.yaml)
 ## Description
 
 Church Admin API
