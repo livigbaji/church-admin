@@ -37,6 +37,7 @@ export const UnitDesignationSchema =
 @Schema({
   versionKey: undefined,
   timestamps: true,
+  id: true,
 })
 export class Unit {
   @ApiProperty()

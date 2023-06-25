@@ -7,6 +7,7 @@ export type LeadershipDocument = Leadership & Document;
 @Schema({
   versionKey: undefined,
   timestamps: true,
+  id: true,
 })
 export class Leadership {
   @ApiProperty()

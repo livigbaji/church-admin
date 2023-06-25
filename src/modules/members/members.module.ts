@@ -9,9 +9,15 @@ import { Unit, UnitSchema } from './models/unit.model';
 import { LeaderSchema, Leadership } from './models/leadership.model';
 import { MembersService } from './services/members.service';
 import { MembersController } from './controllers/members.controller';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
+    MulterModule.registerAsync({
+      useFactory: () => ({
+        dest: './upload',
+      }),
+    }),
     MongooseModule.forFeature([
       { name: Member.name, schema: MemberSchema },
       { name: Unit.name, schema: UnitSchema },

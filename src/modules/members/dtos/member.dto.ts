@@ -163,3 +163,37 @@ export class MemberListResponse {
   })
   records: Member[];
 }
+
+export class MemberImportEntry {
+  'S-NAME': string;
+  STATUS: 'SINGLE' | 'MARRIED';
+  GENDER: 'MALE' | 'FEMALE';
+  'JOINED UNIT': Date;
+  'HOME CELL': string;
+  'JOINED LFC': Date;
+  'NEW BIRTH': Date;
+  BAPTISM: Date;
+  OCCUPATION: string;
+  BIRTHDAY: Date;
+  'PHONE NUMBER': string;
+  ADDRESS: string;
+  QUALIFICATION: string;
+  'NEXT OF KIN': string;
+  'NEXT OF KIN NO': string;
+  VILLAGE: string;
+  'LOCAL GOVT': string;
+  'HOME TOWN': string;
+  STATE: string;
+}
+
+export class MemberExportRequest {
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+}
+
+export class MemberImportCompleteResponse {
+  @ApiProperty()
+  synced: number;
+}

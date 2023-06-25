@@ -48,25 +48,26 @@ export const UnitMembershipSchema =
 @Schema({
   versionKey: undefined,
   timestamps: true,
+  id: true,
 })
 export class Member {
   @ApiProperty()
   @Prop({
     required: true,
-    text: true,
   })
   firstName: string;
 
   @ApiProperty()
   @Prop({
-    text: true,
+    type: String,
+    default: () => '',
   })
   middleName: string;
 
   @ApiProperty()
   @Prop({
+    type: String,
     required: true,
-    text: true,
   })
   lastName: string;
 
@@ -102,6 +103,13 @@ export class Member {
     default: Date.now,
   })
   joinedUnitAt: Date;
+
+  @ApiProperty()
+  @Prop({
+    type: Date,
+    default: Date.now,
+  })
+  joinedCommissionAt: Date;
 
   @ApiProperty()
   @Prop({
@@ -147,7 +155,6 @@ export class Member {
   @Prop({
     type: String,
     required: true,
-    text: true,
   })
   address: string;
 
@@ -185,7 +192,6 @@ export class Member {
   @Prop({
     type: String,
     required: true,
-    text: true,
   })
   nextofKin: string;
 
@@ -200,7 +206,6 @@ export class Member {
   @Prop({
     type: String,
     required: true,
-    text: true,
   })
   village: string;
 
@@ -208,7 +213,6 @@ export class Member {
   @Prop({
     type: String,
     required: true,
-    text: true,
   })
   homeTown: string;
 
@@ -216,7 +220,6 @@ export class Member {
   @Prop({
     type: String,
     required: true,
-    text: true,
   })
   lga: string;
 
@@ -224,7 +227,6 @@ export class Member {
   @Prop({
     type: String,
     required: true,
-    text: true,
   })
   state: string;
 
@@ -251,3 +253,14 @@ export class Member {
 }
 
 export const MemberSchema = SchemaFactory.createForClass(Member);
+
+MemberSchema.index(
+  {
+    firstName: 'text',
+    middleName: 'text',
+    lastName: 'text',
+  },
+  {
+    name: 'fullname_search',
+  },
+);
