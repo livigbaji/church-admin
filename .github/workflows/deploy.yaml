@@ -10,6 +10,7 @@ on:
 
 env:
   app: admin-server
+  app_name: 'coral-app'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel.
 jobs:
@@ -43,3 +44,17 @@ jobs:
 
     - name: Push image to DigitalOcean Container Registry
       run: docker push ${{ secrets.REGISTRY_NAME }}/${{env.app}}:${{ env.tag }}
+
+    - name: Change App Docker tag
+      uses: digitalocean/app_action@main
+      with:
+        app_name: ${{env.app_name}}
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+        images:
+          '[{
+              "name": "${{env.app}}",
+              "registory": "${{ secrets.REGISTRY_NAME }}",
+              "registry_type": "DOCR",
+              "repository": "${{env.app}}",
+              "tag":"${{ env.tag }}"
+          }]'
