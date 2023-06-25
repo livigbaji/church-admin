@@ -18,6 +18,7 @@ import {
 import {
   ApiCreatedResponse,
   ApiOkResponse,
+  ApiOperation,
   ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
@@ -32,6 +33,9 @@ export class UnitsController {
   @ApiCreatedResponse({
     type: Unit,
   })
+  @ApiOperation({
+    summary: 'Create a unit',
+  })
   create(@Body() unit: UnitDTO) {
     return this.unitService.create(unit);
   }
@@ -40,6 +44,9 @@ export class UnitsController {
   @ApiOkResponse({
     type: UnitResponse,
   })
+  @ApiOperation({
+    summary: 'Get all units',
+  })
   list() {
     return this.unitService.list();
   }
@@ -47,6 +54,9 @@ export class UnitsController {
   @Get('/designations')
   @ApiOkResponse({
     type: UnitDesignationResponse,
+  })
+  @ApiOperation({
+    summary: 'Get all designations',
   })
   @ApiQuery({
     name: 'search',
@@ -61,6 +71,9 @@ export class UnitsController {
   @ApiOkResponse({
     type: Unit,
   })
+  @ApiOperation({
+    summary: 'Update unit details',
+  })
   updateUnit(@Param('unit') id: string, @Body() unit: UnitDTO) {
     return this.unitService.update(id, unit);
   }
@@ -68,6 +81,9 @@ export class UnitsController {
   @Delete('/:unit/designations/:designation')
   @ApiOkResponse({
     type: Unit,
+  })
+  @ApiOperation({
+    summary: 'Delete unit designation',
   })
   deleteUnitDesignation(
     @Param('unit') unit: string,
@@ -80,6 +96,9 @@ export class UnitsController {
   @ApiOkResponse({
     type: Unit,
   })
+  @ApiOperation({
+    summary: 'update unit designation',
+  })
   updateDesignation(
     @Param('unit') unit: string,
     @Param('designation') designationId: string,
@@ -91,6 +110,9 @@ export class UnitsController {
   @Post('/:unit/designations')
   @ApiOkResponse({
     type: Unit,
+  })
+  @ApiOperation({
+    summary: 'Create a unit designation',
   })
   addDesignation(
     @Param('unit') unit: string,

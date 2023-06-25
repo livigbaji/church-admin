@@ -22,6 +22,7 @@ import {
   ApiConsumes,
   ApiCreatedResponse,
   ApiOkResponse,
+  ApiOperation,
   ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
@@ -61,6 +62,9 @@ export class MembersController {
     type: Number,
     required: false,
   })
+  @ApiOperation({
+    summary: 'List unit members',
+  })
   @ApiBearerAuth()
   listMembers(
     @Query('search') search: string,
@@ -75,6 +79,9 @@ export class MembersController {
     type: MemberListResponse,
   })
   @ApiBearerAuth()
+  @ApiOperation({
+    summary: 'Create a new member to the unit',
+  })
   createMember(@Body() member: CreateMemberDTO) {
     return this.membersService.create(member);
   }
@@ -97,6 +104,9 @@ export class MembersController {
   })
   @ApiOkResponse({
     type: MemberImportCompleteResponse,
+  })
+  @ApiOperation({
+    summary: 'Bulk import of members as json',
   })
   importMembers(
     @UploadedFile(
@@ -126,6 +136,9 @@ export class MembersController {
     status: HttpStatus.OK,
   })
   @Post('/export')
+  @ApiOperation({
+    summary: 'Export all unit members to excel file',
+  })
   async exportMembers(
     @Res() response: Response,
     @Body() { name }: MemberExportRequest,
@@ -139,6 +152,9 @@ export class MembersController {
     type: Member,
   })
   @ApiBearerAuth()
+  @ApiOperation({
+    summary: 'Update member information',
+  })
   updateMember(@Param('member') id: string, @Body() member: CreateMemberDTO) {
     return this.membersService.update(id, member);
   }
