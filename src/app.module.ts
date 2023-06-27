@@ -8,6 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AttendanceModule } from './modules/attendance/attendance.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { FinancesModule } from './modules/finances/finances.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { FinancesModule } from './modules/finances/finances.module';
     AdminModule,
     FinancesModule,
     MembersModule,
+    ScheduleModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [AppService],

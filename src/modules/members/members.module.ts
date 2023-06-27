@@ -10,6 +10,9 @@ import { LeaderSchema, Leadership } from './models/leadership.model';
 import { MembersService } from './services/members.service';
 import { MembersController } from './controllers/members.controller';
 import { MulterModule } from '@nestjs/platform-express';
+import { BirthdaysController } from './controllers/birthdays.controller';
+import { BirthdaysService } from './services/birthdays.service';
+import { Birthday, BirthdaySchema } from './models/birthday.model';
 
 @Module({
   imports: [
@@ -22,10 +25,21 @@ import { MulterModule } from '@nestjs/platform-express';
       { name: Member.name, schema: MemberSchema },
       { name: Unit.name, schema: UnitSchema },
       { name: Leadership.name, schema: LeaderSchema },
+      { name: Birthday.name, schema: BirthdaySchema },
     ]),
   ],
-  providers: [LeadershipService, UnitsService, MembersService],
-  controllers: [UnitsController, LeadershipController, MembersController],
+  providers: [
+    LeadershipService,
+    UnitsService,
+    MembersService,
+    BirthdaysService,
+  ],
+  controllers: [
+    UnitsController,
+    LeadershipController,
+    MembersController,
+    BirthdaysController,
+  ],
   exports: [MembersService],
 })
 export class MembersModule {}

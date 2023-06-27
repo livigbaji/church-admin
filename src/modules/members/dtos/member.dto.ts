@@ -5,8 +5,9 @@ import {
   IsNotEmpty,
   IsPhoneNumber,
   IsString,
+  ValidateNested,
 } from 'class-validator';
-import { MaritalStatus, Gender } from 'src/types';
+import { MaritalStatus, Gender, Birthday } from 'src/types';
 import { Member } from '../models/member.model';
 
 export class CreateMemberDTO {
@@ -68,9 +69,9 @@ export class CreateMemberDTO {
   @IsString({ each: true })
   occupation: string[];
 
-  @IsString()
+  @ValidateNested()
   @ApiProperty()
-  birthday: string;
+  birthday: Birthday;
 
   @ApiProperty({
     isArray: true,

@@ -1,7 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-import { Document, Types } from 'mongoose';
-import { Gender, MaritalStatus, UnitMembershipStatus } from 'src/types';
+import { Document, Types, Schema as MongooseSchema } from 'mongoose';
+import {
+  Birthday,
+  Gender,
+  MaritalStatus,
+  UnitMembershipStatus,
+} from 'src/types';
 
 export type MemberDocument = Member & Document;
 
@@ -135,11 +140,11 @@ export class Member {
   occupation: string[];
 
   @Prop({
-    type: String,
+    type: MongooseSchema.Types.Mixed,
     required: true,
   })
   @ApiProperty()
-  birthday: string;
+  birthday: Birthday;
 
   @ApiProperty({
     isArray: true,
