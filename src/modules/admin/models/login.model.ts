@@ -8,6 +8,7 @@ export type LoginDocument = Login & Document;
 
 @Schema({
   versionKey: undefined,
+  timestamps: true,
   _id: false,
 })
 export class Login {

@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h3>Attendees</h3>
+        <ol>
+            <% attendees.forEach(attendee => { %>
+                <li><%= attendee.name %> - <%= attendee.phone %></li>
+            <% })%>
+        </ol>
+
+        <h3>Absentees</h3>
+        <ol>
+            <% absentees.forEach(absentee => { %>
+                <li><%= absentee.name %> - <%= absentee.phone %></li>
+            <% })%>
+        </ol>
+    </body>
+</html>

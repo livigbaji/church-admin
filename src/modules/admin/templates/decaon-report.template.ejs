@@ -1,0 +1,232 @@
+<html>
+<body>
+<h1>DEACON'S BOARD</h1>
+<h4>Living Faith Church, Lokogoma</h4>
+<h3>SERVICE UNIT MONTHLY REPORTING FORM</h3>
+
+Month/Year/Theme of the month: <%= month %>/<%= year %>/<%= themeOfMonth %>
+
+<ol>
+    <li>Name of Unit……………………………………TECHNICAL UNIT………………………………………………………………</li>
+    <li>Numerical Strength in the previous month: Male…41….. Female……12…… Total……53…….</li>
+    <li>Number of new intakes during the month in view: Male…41….. Female……12…… Total……53…….</li>
+    <li>Numerical Strength to date: Male…41….. Female……12…… Total……53…….</li>
+    <li>Name of Unit Pastor………………………………………PASTOR REX HEGEN……………………………………</li>
+    <li>
+        Spiritual activities during the month in view:
+        <ol type='I'>
+            <% Object.entries(spiritualActivities).forEach(([ spiritualActivity, spiritualActivityReport ]) => {%>
+                <li><%= spiritualActivity %>: <%= spiritualActivityReport %></li>
+            <% })%>
+        </ol>
+    </li>
+    <li>
+        Training activities during the month:
+        <ol type='I'>
+            <% Object.entries(trainingActivities).forEach(([ trainingActivity, trainingActivityReport ]) => {%>
+                <li><%= trainingActivity %>: <%= trainingActivityReport %></li>
+            <% })%>
+        </ol>
+    </li>
+    <li>
+        Social activities during the month:
+        <ol type='I'>
+            <% Object.entries(trainingActivities).forEach(([ trainingActivity, trainingActivityReport ]) => {%>
+                <li><%= trainingActivity %>: <%= trainingActivityReport %></li>
+            <% })%>
+        </ol>
+    </li>
+    <li>
+        Weekly Meetings:
+        <ol type='I'>
+            <li>Attendance: <% Object.entries(weeklyMeetings.attendance).forEach(([ weekNumber, weekAttendance ]) => {%>
+                <%=weekNumber%>: <%=weekAttendance%>...
+            <%})%></li>
+            <li>Resolutions made: 
+                <ol type='a'><% Object.entries(weeklyMeetings.resolution).forEach(([ weekNumber, weekResolution ]) => {%>
+                    <li><%=weekNumber%>: <%=weekResolution%>...</li>
+                <% }) %></ol>
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h6>ITEMS 10 IS FOR EVANGELISM UNIT ONLY</h6>
+        Number of New Converts & New Contacts obtained during the Month:
+<table width="100%">
+            <thead>
+                <tr>
+                    <th rowspan=3 valign="center" aligh="center" style='border: 1px solid black'>Week</th>
+                    <th colspan=6 style='border: 1px solid black'>Wednesdays</th>
+                    <th colspan=6 style='border: 1px solid black'>Saturdays</th>
+                    <th colspan=2 rowspan=2 valign="center" style='border: 1px solid black' aligh="center">No. of Unit Members available</th>
+                </tr>
+              <tr>
+                    <th colspan=3 style='border: 1px solid black'>New Converts</th>
+                    <th colspan=3 style='border: 1px solid black'>New Contacts</th>
+                    <th colspan=3 style='border: 1px solid black'>New Converts</th>
+                    <th colspan=3 style='border: 1px solid black'>New Contacts</th>
+                </tr>
+                <tr>
+                    <th style='border: 1px solid black'>Male</th>
+                    <th style='border: 1px solid black'>Female</th>
+                    <th style='border: 1px solid black'>Total</th>
+                    <th style='border: 1px solid black'>Male</th>
+                    <th style='border: 1px solid black'>Female</th>
+                    <th style='border: 1px solid black'>Total</th>
+                    <th style='border: 1px solid black'>Male</th>
+                    <th style='border: 1px solid black'>Female</th>
+                    <th style='border: 1px solid black'>Total</th>
+                    <th style='border: 1px solid black'>Male</th>
+                    <th style='border: 1px solid black'>Female</th>
+                    <th style='border: 1px solid black'>Total</th>
+                    <th style='border: 1px solid black'>&nbsp;</th>
+                    <th style='border: 1px solid black'>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 1; i >= numberOfWeeks; i++) { %>
+              <tr>
+                <th style='border: 1px solid black'><%= i %></th>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+              </tr>
+              <% } %>
+            </tbody>
+        </table>
+
+        <br/>
+        Meeting Days ……………………………<%=meetingDay%>………………………………………………….....<br />
+        Preacher ………………………………<%= meetingPreacher || unitPastor %>……………………………………………………………………… <br />
+        Topic of the word ………<%= topicOfMeeting  %>………………………………………………<br />
+        Attendance ………………………………<%= meetingAttendance %>………………………………………………………………………………………………….., <br />
+        No. of New members ………………………………<%= newMeetingAttendance %>…………………………………………………………………………………………….<br />
+    </li>
+
+    <li>
+        <h6>ITEMS 11 IS FOR FOLLOW UP UNIT ONLY</h6>
+        Number of New Converts & New Members in the Church on Sundays during the month:
+
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan=2 style='border: 1px solid black'>Week</th>
+                    <th colspan=3 style='border: 1px solid black'>New Converts</th>
+                    <th colspan=3 style='border: 1px solid black'>New Contacts</th>
+                </tr>
+                <tr>
+                    <th style='border: 1px solid black'>Male</th>
+                    <th style='border: 1px solid black'>Female</th>
+                    <th style='border: 1px solid black'>Total</th>
+                    <th style='border: 1px solid black'>Male</th>
+                    <th style='border: 1px solid black'>Female</th>
+                    <th style='border: 1px solid black'>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 1; i >= numberOfWeeks; i++) { %>
+              <tr>
+                <th style='border: 1px solid black'><%= i %></th>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+              </tr>
+              <% } %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                </tr>
+            </tfoot>
+        </table>
+    </li>
+
+    <li>
+        Number of New Converts & New Members who attend BFS & Baptism during the month
+                <table>
+            <thead>
+                <tr>
+                    <th rowspan=2 style='border: 1px solid black'>Week</th>
+                    <th colspan=3 style='border: 1px solid black'>BFS</th>
+                    <th colspan=3 style='border: 1px solid black'>Baptism</th>
+                </tr>
+                <tr>
+                    <th style='border: 1px solid black'>Male</th>
+                    <th style='border: 1px solid black'>Female</th>
+                    <th style='border: 1px solid black'>Total</th>
+                    <th style='border: 1px solid black'>Male</th>
+                    <th style='border: 1px solid black'>Female</th>
+                    <th style='border: 1px solid black'>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 1; i >= numberOfWeeks; i++) { %>
+              <tr>
+                <th style='border: 1px solid black'><%= i %></th>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+                <td style='border: 1px solid black'>&nbsp;</td>
+              </tr>
+              <% } %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                    <td style='border: 1px solid black'>&nbsp;</td>
+                </tr>
+            </tfoot>
+        </table>
+    </li>
+
+    <li>
+        Infractions/Disciplinary Actions: <%= disciplinaryActions.join(', ') %>
+    </li>
+
+    <li>
+        Operational Challenges: <%= operationalChallenges.join(', ') %>
+    </li>
+
+    <li>
+        Recommendations: <%= recommendations.join(', ') %>
+    </li>
+</ol>
+
+<p>
+    ..........................<br />
+    <span>Unit Coordinator</span>
+</p>
+
+<p>
+    ..........................<br />
+    <span>Unit Secretary</span>
+</p>
+</body>
+</html>
