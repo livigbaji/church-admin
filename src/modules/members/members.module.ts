@@ -13,6 +13,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { BirthdaysController } from './controllers/birthdays.controller';
 import { BirthdaysService } from './services/birthdays.service';
 import { Birthday, BirthdaySchema } from './models/birthday.model';
+import { ConfigsController } from './controllers/configs.controller';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { Birthday, BirthdaySchema } from './models/birthday.model';
     LeadershipController,
     MembersController,
     BirthdaysController,
+    ConfigsController,
   ],
   exports: [MembersService],
 })

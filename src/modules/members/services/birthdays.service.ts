@@ -143,4 +143,17 @@ export class BirthdaysService {
       },
     );
   }
+
+  getUpcomingBirthdaysCount(month?: number) {
+    const today = new Date();
+
+    return this.memberModel
+      .count({
+        birthday: {
+          day: { $gt: today.getDate() },
+          month: month || today.getMonth() + 1,
+        },
+      })
+      .exec();
+  }
 }

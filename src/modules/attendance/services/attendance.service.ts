@@ -6,7 +6,13 @@ import {
   AttendanceCalendarView,
   CreateAttendance,
 } from '../dtos/create-attendance.dto';
-import { endOfMonth, isValid, startOfMonth } from 'date-fns';
+import {
+  endOfDay,
+  endOfMonth,
+  isValid,
+  startOfDay,
+  startOfMonth,
+} from 'date-fns';
 
 @Injectable()
 export class AttendanceService {
@@ -140,5 +146,61 @@ export class AttendanceService {
         },
       ])
       .then((records) => ({ records }));
+  }
+
+  getDailyReport(date: Date) {
+    date = date || new Date();
+    return this.attendanceModel.aggregate([
+      {
+        $match: {
+          createdAt: {
+            $gte: startOfDay(date),
+            $lt: endOfDay(date),
+          },
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          ids: { $addToSet: '$member' },
+        },
+      },
+      {
+        $facet: {
+          absentees: [
+            {
+              $lookup: {
+                from: 'members',
+                let: { ids: '$ids' },
+                pipeline: [{ $match: { _id: { $nin: '$ids' } } }],
+                as: 'members',
+              },
+            },
+            {
+              $project: {
+                name: { $concat: ['$firstName', '$middleName', '$lastName'] },
+                phone: { $first: '$phoneNumber' },
+              },
+            },
+          ],
+          attendees: [
+            {
+              $lookup: {
+                from: 'members',
+                let: { ids: '$ids' },
+                pipeline: [{ $match: { _id: { $in: '$ids' } } }],
+                as: 'members',
+              },
+            },
+            {
+              $project: {
+                name: { $concat: ['$firstName', '$middleName', '$lastName'] },
+                phone: { $first: '$phoneNumber' },
+              },
+            },
+          ],
+        },
+      },
+    ]);
   }
 }
