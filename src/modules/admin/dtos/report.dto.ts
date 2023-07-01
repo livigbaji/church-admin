@@ -150,9 +150,12 @@ export class DashboardReport {
   @ApiProperty()
   absentLastWeek: number;
   @ApiProperty({
-    isArray: true,
+    example: {
+      Jan: 0,
+      Feb: 12,
+    },
   })
-  attendancePerMonth: Record<string, number>[];
+  attendancePerMonth: Record<string, number>;
   @ApiProperty()
   femaleVsMales: MemberCount;
   @ApiProperty()

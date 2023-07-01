@@ -1,11 +1,26 @@
-import { Body, Controller, Get, Header, Param, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Header,
+  Param,
+  Post,
+  Res,
+} from '@nestjs/common';
 import { ReportService } from '../services/report.service';
 import { DashboardReport, ReportDTO, ReportResponse } from '../dtos/report.dto';
 import { Response } from 'express';
-import { ApiOkResponse, ApiOperation, ApiProduces } from '@nestjs/swagger';
+import {
+  ApiOkResponse,
+  ApiOperation,
+  ApiParam,
+  ApiProduces,
+  ApiTags,
+} from '@nestjs/swagger';
 const downloadFormat =
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 
+@ApiTags('Report')
 @Controller('reports')
 export class ReportsController {
   constructor(private readonly reportService: ReportService) {}
@@ -18,6 +33,7 @@ export class ReportsController {
     schema: {
       type: 'string',
       format: 'binary',
+      example: 'Weekly Report',
     },
   })
   @ApiProduces(downloadFormat)
@@ -42,6 +58,18 @@ export class ReportsController {
   @ApiOperation({
     summary: 'Download monthly report for the deacon assembly',
   })
+  @ApiOkResponse({
+    schema: {
+      type: 'string',
+      format: 'binary',
+      example: 'Weekly Report',
+    },
+  })
+  @ApiParam({
+    name: 'month',
+    required: false,
+  })
+  @ApiProduces(downloadFormat)
   @Header('Content-Disposition', 'attachment; filename="deacon-report.docx"')
   async downloadDeaconReport(
     @Res() response: Response,
@@ -59,6 +87,10 @@ export class ReportsController {
   @ApiOkResponse({
     type: ReportResponse,
   })
+  @ApiParam({
+    name: 'month',
+    required: false,
+  })
   @ApiOperation({
     summary: 'Get Deacon assembly report for the month',
   })
@@ -69,6 +101,10 @@ export class ReportsController {
   @Post('/monthly/:month?')
   @ApiOkResponse({
     type: ReportResponse,
+  })
+  @ApiParam({
+    name: 'month',
+    required: false,
   })
   @ApiOperation({
     summary: 'Create or update Deacon assembly report for the month',
