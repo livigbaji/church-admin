@@ -9,7 +9,6 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { WeeklyActivities } from '../models/report.model';
 
 export class WeeklyActivitiesDTO {
   @ApiProperty({
@@ -62,10 +61,10 @@ export class ReportDTO {
   socialActivities: Record<string, string | number>;
 
   @ApiProperty({
-    type: WeeklyActivities,
+    type: WeeklyActivitiesDTO,
   })
   @ValidateNested()
-  weeklyMeetings: WeeklyActivities;
+  weeklyMeetings: WeeklyActivitiesDTO;
 
   @ApiProperty({
     example: '3RD SUNDAY OF EVERY MONTH',
@@ -104,4 +103,63 @@ export class ReportDTO {
   @IsString()
   @IsNotEmpty()
   recommendations: string[];
+}
+
+export class MemberCount {
+  @ApiProperty()
+  male: number;
+
+  @ApiProperty()
+  female: number;
+}
+
+export class ReportResponse extends ReportDTO {
+  @ApiProperty()
+  activeMembers: MemberCount;
+
+  @ApiProperty()
+  prevMonth: MemberCount;
+
+  @ApiProperty()
+  intakes: MemberCount;
+}
+
+export class ServingStats {
+  @ApiProperty()
+  serving: number;
+
+  @ApiProperty()
+  nonServing: number;
+}
+
+export class ServiceStats {
+  @ApiProperty()
+  newMembers: MemberCount;
+
+  @ApiProperty()
+  oldMembers: MemberCount;
+}
+
+export class DashboardReport {
+  @ApiProperty()
+  birthdaysUpcoming: number;
+  @ApiProperty()
+  totalMembers: number;
+  @ApiProperty()
+  totalSubunits: number;
+  @ApiProperty()
+  absentLastWeek: number;
+  @ApiProperty({
+    isArray: true,
+  })
+  attendancePerMonth: Record<string, number>[];
+  @ApiProperty()
+  femaleVsMales: MemberCount;
+  @ApiProperty()
+  servingVsNonServing: ServingStats;
+  @ApiProperty({
+    isArray: true,
+    type: ServiceStats,
+  })
+  services: ServiceStats[];
 }

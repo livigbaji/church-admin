@@ -2,6 +2,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { Document, Types } from 'mongoose';
+import { Permission } from 'src/types';
 
 export type AdminDocument = Admin & Document;
 
@@ -25,6 +26,14 @@ export class Admin {
     required: true,
   })
   secret: string;
+
+  @ApiProperty()
+  @Prop({
+    type: String,
+    enum: Permission,
+    required: true,
+  })
+  permissions: Permission[];
 
   @ApiProperty()
   @Prop({

@@ -47,10 +47,17 @@ export type ReportDocument = Report & Document;
 export class Report {
   @ApiProperty()
   @Prop({
-    type: Types.ObjectId,
+    type: [Types.ObjectId],
     required: true,
   })
-  admin: Types.ObjectId;
+  admin: Types.ObjectId[];
+
+  @ApiProperty()
+  @Prop({
+    type: String,
+    required: true,
+  })
+  month: string;
 
   @ApiProperty()
   @Prop({

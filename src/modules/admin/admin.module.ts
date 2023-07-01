@@ -7,16 +7,22 @@ import { Admin, AdminSchema } from './models/admin.model';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Login, LoginSchema } from './models/login.model';
 import { MembersModule } from '../members/members.module';
+import { ReportsController } from './controllers/reports.controller';
+import { ReportService } from './services/report.service';
+import { AttendanceModule } from '../attendance/attendance.module';
+import { ReportSchema, Report } from './models/report.model';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: Admin.name, schema: AdminSchema },
       { name: Login.name, schema: LoginSchema },
+      { name: Report.name, schema: ReportSchema },
     ]),
     MembersModule,
+    AttendanceModule,
   ],
-  controllers: [AdminController, AuthController],
-  providers: [AuthService, AdminService],
+  controllers: [AdminController, AuthController, ReportsController],
+  providers: [AuthService, AdminService, ReportService],
 })
 export class AdminModule {}

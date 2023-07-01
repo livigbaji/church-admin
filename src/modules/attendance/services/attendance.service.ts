@@ -148,7 +148,7 @@ export class AttendanceService {
       .then((records) => ({ records }));
   }
 
-  getDailyReport(date: Date) {
+  getDailyReport(date?: Date) {
     date = date || new Date();
     return this.attendanceModel.aggregate([
       {
