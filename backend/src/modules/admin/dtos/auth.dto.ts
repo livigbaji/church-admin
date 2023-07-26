@@ -6,7 +6,7 @@ import {
   IsPhoneNumber,
   IsString,
 } from 'class-validator';
-import { Member } from 'src/modules/members/models/member.model';
+import { Member } from 'backend/src/modules/members/models/member.model';
 
 export class NewAuthDTO {
   @IsPhoneNumber('NG')

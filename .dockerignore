@@ -395,7 +395,7 @@ Temporary Items
 =======
 # Local
 .env
-dist
+**/dist
 .github
 infra
 .vscode

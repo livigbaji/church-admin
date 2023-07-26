@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Member, MemberDocument } from '../models/member.model';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UnitMembershipStatus } from 'src/types';
+import { UnitMembershipStatus } from 'backend/src/types';
 import { CreateMemberDTO, MemberImportEntry } from '../dtos/member.dto';
 // import * as fs from 'fs';
 import { readFile, utils, writeFile } from 'xlsx';
