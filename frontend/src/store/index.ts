@@ -6,7 +6,7 @@ import { Reducers } from "./reducers";
 // import { API } from "@/services/api";
 
 export const createStore = (
-  options?: ConfigureStoreOptions["preloadedState"] | undefined
+  _options?: ConfigureStoreOptions["preloadedState"] | undefined
 ) =>
   configureStore({
     reducer: Reducers,

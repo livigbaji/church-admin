@@ -32,7 +32,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: any) => {
 
   const storedSidebarExpanded = localStorage.getItem("sidebar-expanded");
   // eslint-disable-next-line
-  const [sidebarExpanded, setSidebarExpanded] = useState<any>(
+  const [sidebarExpanded, _setSidebarExpanded] = useState<any>(
     storedSidebarExpanded === null ? false : storedSidebarExpanded === "true"
   );
 
