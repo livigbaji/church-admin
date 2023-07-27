@@ -14,7 +14,7 @@ import {
 import { Admin } from '../models/admin.model';
 
 @ApiTags('Administration')
-@Controller('admins')
+@Controller('/api/admins')
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 

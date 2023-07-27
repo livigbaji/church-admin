@@ -21,7 +21,7 @@ const downloadFormat =
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 
 @ApiTags('Report')
-@Controller('reports')
+@Controller('/api/reports')
 export class ReportsController {
   constructor(private readonly reportService: ReportService) {}
 

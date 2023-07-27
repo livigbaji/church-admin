@@ -11,7 +11,7 @@ import {
 import { Leadership } from '../models/leadership.model';
 
 @ApiTags('Leadership')
-@Controller('leadership')
+@Controller('/api/leadership')
 export class LeadershipController {
   constructor(private readonly leadershipService: LeadershipService) {}
 

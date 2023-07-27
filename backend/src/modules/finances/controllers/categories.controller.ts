@@ -24,7 +24,7 @@ import {
 import { Category } from '../models/category.model';
 
 @ApiTags('Finances')
-@Controller('categories')
+@Controller('/api/categories')
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 

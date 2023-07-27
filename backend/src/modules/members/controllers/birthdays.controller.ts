@@ -25,7 +25,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 
 @ApiTags('Birthday')
-@Controller('birthdays')
+@Controller('/api/birthdays')
 export class BirthdaysController {
   constructor(private readonly birthdayService: BirthdaysService) {}
 
