@@ -13,12 +13,14 @@ FROM node:16.15.0-slim AS frontend_build
 WORKDIR /app
 
 COPY frontend/package*.json ./
+COPY frontend/yarn.lock ./
 
-RUN npm ci
+
+RUN yarn instal --frozen-lockfile
 
 COPY . .
 
-RUN npm run build
+RUN yarn build
 
 # release image
 
