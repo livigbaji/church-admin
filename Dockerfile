@@ -16,7 +16,7 @@ COPY frontend/package*.json ./
 COPY frontend/yarn.lock ./
 
 
-RUN yarn instal --frozen-lockfile
+RUN yarn install --frozen-lockfile
 
 COPY . .
 
