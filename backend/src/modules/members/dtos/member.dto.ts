@@ -7,7 +7,7 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { MaritalStatus, Gender, Birthday } from 'backend/src/types';
+import { MaritalStatus, Gender, Birthday } from 'src/types';
 import { Member } from '../models/member.model';
 
 export class CreateMemberDTO {

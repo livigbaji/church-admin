@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
-import { Birthday } from 'backend/src/types';
+import { Birthday } from 'src/types';
 
 export class BirthdayForm {
   @ApiProperty()

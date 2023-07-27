@@ -1,7 +1,7 @@
 FROM node:16.15.0-slim AS backend_build
 WORKDIR /app
 
-COPY backend/package*.json ./
+COPY ./backend/package*.json ./
 
 RUN npm ci
 
@@ -12,13 +12,15 @@ RUN npm run build
 FROM node:16.15.0-slim AS frontend_build
 WORKDIR /app
 
-COPY frontend/package*.json ./
+COPY ./frontend/package*.json ./
+COPY ./frontend/yarn.lock ./
 
-RUN npm ci
 
-COPY . .
+RUN yarn install --frozen-lockfile
 
-RUN npm run build
+COPY ./frontend .
+
+RUN yarn build
 
 # release image
 
