@@ -6,7 +6,7 @@ import {
   Gender,
   MaritalStatus,
   UnitMembershipStatus,
-} from 'backend/src/types';
+} from 'src/types';
 
 export type MemberDocument = Member & Document;
 

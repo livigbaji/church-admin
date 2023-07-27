@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Document, Types } from 'mongoose';
-import { TransactionType } from 'backend/src/types/transaction.types';
+import { TransactionType } from 'src/types/transaction.types';
 
 export type TransactionDocument = Transaction & Document;
 

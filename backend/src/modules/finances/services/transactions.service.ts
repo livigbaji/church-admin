@@ -4,7 +4,7 @@ import { Category, CategoryDocument } from '../models/category.model';
 import { Transaction, TransactionDocument } from '../models/transaction.model';
 import { Model } from 'mongoose';
 import { NewTransactionDTO, TransferDTO } from '../dtos/transaction.dto';
-import { TransactionType } from 'backend/src/types/transaction.types';
+import { TransactionType } from 'src/types/transaction.types';
 
 @Injectable()
 export class TransactionsService {

@@ -2,7 +2,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { Document, Types } from 'mongoose';
-import { Permission } from 'backend/src/types';
+import { Permission } from 'src/types';
 
 export type AdminDocument = Admin & Document;
 

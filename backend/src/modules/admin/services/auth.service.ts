@@ -9,7 +9,7 @@ import { authenticator } from 'otplib';
 import { NewAuthDTO } from '../dtos/auth.dto';
 import { Admin, AdminDocument } from '../models/admin.model';
 import { Login, LoginDocument } from '../models/login.model';
-import { MembersService } from 'backend/src/modules/members/services/members.service';
+import { MembersService } from 'src/modules/members/services/members.service';
 import { JwtPayload, sign, verify } from 'jsonwebtoken';
 import { ConfigService } from '@nestjs/config';
 import { differenceInSeconds } from 'date-fns';
