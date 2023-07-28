@@ -78,8 +78,8 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: any) => {
       }`}
     >
       {/* <!-- SIDEBAR HEADER --> */}
-      <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5 ">
-        <NavLink to="/" className={`text-white mt-10 flex items-end`}>
+      <div className="lg:flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5 hidden">
+        <NavLink to="/" className={`text-white mt-10 flex items-end `}>
           <Logo />
           &nbsp;
           <p className="text-[20px] font-bold">Techunit</p>

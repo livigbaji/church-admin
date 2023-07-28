@@ -10,9 +10,8 @@ export const DropdownUser = () => {
   const dropdown = useRef<any>(null);
   const user = useUser();
 
-  console.log(user, "user");
-
   const handleLogout = useLogout();
+  console.log(user);
 
   useEffect(() => {
     const clickHandler = ({ target }: any) => {
