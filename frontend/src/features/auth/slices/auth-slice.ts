@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import Cookie from "js-cookie";
 
 import { storage } from "@/utils";
 
