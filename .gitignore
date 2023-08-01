@@ -400,3 +400,4 @@ Temporary Items
 .serverless/**/*.zip
 upload
 .vscode
+backend/client

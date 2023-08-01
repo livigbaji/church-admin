@@ -4,7 +4,7 @@ import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { State } from '../dtos/state.dto';
 
 @ApiTags('Config')
-@Controller('configs')
+@Controller('/api/configs')
 export class ConfigsController {
   @ApiOkResponse({
     type: State,

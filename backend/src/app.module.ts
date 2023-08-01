@@ -9,6 +9,8 @@ import { AttendanceModule } from './modules/attendance/attendance.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { FinancesModule } from './modules/finances/finances.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'lodash';
 
 @Module({
   imports: [
@@ -28,6 +30,10 @@ import { ScheduleModule } from '@nestjs/schedule';
     FinancesModule,
     MembersModule,
     ScheduleModule.forRoot(),
+    ServeStaticModule.forRoot({
+      rootPath: join([__dirname, 'client'], '/'),
+      exclude: ['api'],
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

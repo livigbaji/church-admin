@@ -25,7 +25,7 @@ import {
 import { Unit } from '../models/unit.model';
 
 @ApiTags('Unit')
-@Controller('units')
+@Controller('/api/units')
 export class UnitsController {
   constructor(private readonly unitService: UnitsService) {}
 

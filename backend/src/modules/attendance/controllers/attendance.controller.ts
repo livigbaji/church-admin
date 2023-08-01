@@ -18,7 +18,7 @@ import {
 import { Attendance } from '../models/attendance.model';
 
 @ApiTags('Attendance')
-@Controller('attendances')
+@Controller('/api/attendances')
 export class AttendanceController {
   constructor(private readonly attendanceService: AttendanceService) {}
 
