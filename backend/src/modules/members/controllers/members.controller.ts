@@ -37,7 +37,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Response } from 'express';
 
 @ApiTags('Member')
-@Controller('members')
+@Controller('/api/members')
 export class MembersController {
   constructor(private readonly membersService: MembersService) {}
 

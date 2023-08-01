@@ -14,7 +14,7 @@ import {
 } from '../dtos/transaction.dto';
 
 @ApiTags('Finances')
-@Controller('transactions')
+@Controller('/api/transactions')
 export class TransactionsController {
   constructor(private readonly transactionSerivce: TransactionsService) {}
 

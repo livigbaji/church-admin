@@ -42,6 +42,6 @@ RUN addgroup --system kings && adduser --system --ingroup kings david \
 USER david
 
 COPY --from=backend_build /app/dist ./
-COPY --from=frontend_build /app/dist ./dist
+COPY --from=frontend_build /app/dist ./client
 
 CMD ["pm2", "start", "-s", "main.js", "--name", "app", "--no-daemon"]
