@@ -1,5 +1,5 @@
-import { Select } from "@/components";
 import { useState } from "react";
+import { Select } from "@/components";
 
 const Users = () => {
   const duration = [
@@ -16,9 +16,10 @@ const Users = () => {
     { name: "Last Year", value: "last_year" },
   ];
   const [viewsDuration, setViewsDuration] = useState<string | number>("today");
+
   return (
     <section>
-      <div className="bg-white py-10 flex">
+      <div className="flex py-10 bg-white">
         {/* <Selection */}
         <Select
           value={viewsDuration}

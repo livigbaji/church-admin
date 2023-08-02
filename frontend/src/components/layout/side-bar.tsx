@@ -109,9 +109,9 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: any) => {
       </div>
       {/* <!-- SIDEBAR HEADER --> */}
 
-      <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
+      <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
         {/* <!-- Sidebar Menu --> */}
-        <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
+        <nav className="px-4 py-4 mt-5 lg:mt-9 lg:px-6">
           {/* <!-- Menu Group --> */}
           <div>
             <ul className="mb-6 flex flex-col gap-1.5 text-white">
@@ -136,7 +136,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: any) => {
           </div>
 
           {/* <!-- Others Group --> */}
-          <div className=" ">
+          <div className="">
             <ul className="mb-6 flex flex-col gap-1.5 text-white">
               {/* <!-- Menu Item Logout --> */}
 
