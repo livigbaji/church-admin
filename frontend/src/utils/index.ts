@@ -4,3 +4,4 @@ export * from "./get-current-title";
 export * from "./use-logout";
 export * from "./custom-hooks";
 export * from "./get-initials";
+export * from "./fake-data";

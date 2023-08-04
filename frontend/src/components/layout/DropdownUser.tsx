@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logout } from "@/assets/svgs/logout.svg";
 import { useUser } from "@/features";
 import { getInitials, useLogout } from "@/utils";
+
 export const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -10,9 +11,8 @@ export const DropdownUser = () => {
   const dropdown = useRef<any>(null);
   const user = useUser();
 
-  console.log(user, "user");
-
   const handleLogout = useLogout();
+  console.log(user);
 
   useEffect(() => {
     const clickHandler = ({ target }: any) => {

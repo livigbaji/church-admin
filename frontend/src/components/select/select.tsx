@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
-import { ReactComponent as Caret } from "@/assets/svgs/caret.svg";
+import Caret from "@/assets/images/arrow-down.png";
 import { ReactComponent as CheckMarkIcon } from "@/assets/svgs/check-mark-icon.svg";
 import { useCustomState } from "@/utils";
 
@@ -76,10 +76,10 @@ export function Select({
         <div
           onClick={() => setShowDropDown(!showDropDown)}
           className={` w-full h-full flex items-center justify-between px-4  md:cursor-pointer ${
-            noBorder ? "" : "border border-[#D0D5DD] shadow-sm rounded-[4px]"
+            noBorder ? "" : "border border-[#999999] shadow-sm rounded-[5px]"
           }`}
         >
-          <span className="text-[12px] sm:text-[13px]">
+          <span className="text-xs text-text_light sm:text-[13px]">
             {_value
               ? options?.find((option) => option.value === _value)?.name
               : placeholder || "Select"}
@@ -99,7 +99,8 @@ export function Select({
             }`}
           /> */}
 
-          <Caret />
+          {/* <Caret /> */}
+          <img src={Caret} alt="arrow-down" className="w-4 cursor-pointer" />
         </div>
 
         {showDropDown ? (

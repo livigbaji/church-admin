@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import Cookie from "js-cookie";
 
 import { storage } from "@/utils";
 
@@ -18,8 +17,8 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  user: localStorage.getItem("tech_unit_user_profile") || null,
-  access_token: Cookie.get("tech_unit_access_token") || null,
+  user: storage["localStorage"].get<User>("tech_unit_user_profile") || null,
+  access_token: storage["cookieStorage"].get("tech_unit_access_token") || null,
 } as {
   token: any;
   user: null | any;
