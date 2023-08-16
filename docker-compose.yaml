@@ -1,0 +1,38 @@
+version: "3.3"
+
+volumes:
+  mongodb-data: {}
+
+networks:
+  church-network: {}
+
+services:
+  
+  mongodb:
+    image: mongo:5.0.11
+    ports:
+      - 27015:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=projeckt
+      - MONGO_INITDB_ROOT_PASSWORD=projecktpassword
+    restart: always
+    volumes:
+      - ./mongodb-data:/data/db
+    networks:
+      - church-network
+
+  web:
+    container_name: admin_web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3005:3005
+    environment:
+      - NODE_ENV=development
+      - PORT=3005
+      - DATABASE_URI=mongodb://projeckt:projecktpassword@mongodb:27017/church_admin?authSource=admin
+      - JWT_KEY=skdkjbbdkjnwkjdejdwjendjndknwedjnekwndkenwdkndkn
+    networks:
+      - church-network

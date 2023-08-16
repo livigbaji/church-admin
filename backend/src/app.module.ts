@@ -32,7 +32,7 @@ import { join } from 'lodash';
     ScheduleModule.forRoot(),
     ServeStaticModule.forRoot({
       rootPath: join([__dirname, 'client'], '/'),
-      exclude: ['api'],
+      exclude: ['api', 'docs'],
     }),
   ],
   controllers: [AppController],
