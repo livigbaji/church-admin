@@ -1,4 +1,4 @@
-FROM node:16.15.0-slim AS backend_build
+FROM node:20.5-slim AS backend_build
 WORKDIR /app
 
 COPY ./backend/package*.json ./
@@ -24,11 +24,12 @@ RUN yarn build
 
 # release image
 
-FROM node:16.15.0-slim AS release
-RUN npm i -g pm2@latest
+FROM node:20.5-slim AS release
+
 WORKDIR /app
 
-COPY --from=backend_build /app/node_modules/ ./node_modules/
+COPY --from=backend_build /app/node_modules/ ./node_modules
+COPY --from=backend_build /app/package*.json ./
 
 RUN npm prune --production
 
@@ -44,4 +45,4 @@ USER david
 COPY --from=backend_build /app/dist ./
 COPY --from=frontend_build /app/dist ./client
 
-CMD ["pm2", "start", "-s", "main.js", "--name", "app", "--no-daemon"]
+CMD ["node", "main.js"]

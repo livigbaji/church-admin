@@ -399,3 +399,5 @@ Temporary Items
 .github
 infra
 .vscode
+mongodb-data
+docker-compose

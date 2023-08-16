@@ -19,7 +19,6 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Church Admin API')
     .setDescription('Church Admin Webservice')
-    .setBasePath('/api')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

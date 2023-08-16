@@ -8,7 +8,6 @@ import { AttendanceService } from 'src/modules/attendance/services/attendance.se
 import { MemberCount, ReportDTO, ReportResponse } from '../dtos/report.dto';
 import * as ejs from 'ejs';
 import { readFileSync } from 'fs';
-import HTMLtoDOCX = require('html-to-docx');
 
 const getReportMonth = () => {
   const today = new Date();
@@ -37,11 +36,8 @@ export class ReportService {
         encoding: 'utf8',
       },
     );
-    return HTMLtoDOCX(ejs.render(template, attendance), null, {
-      table: { row: { cantSplit: true } },
-      footer: true,
-      pageNumber: true,
-    });
+    const renderedTemplate = ejs.render(template, attendance);
+    return renderedTemplate;
   }
 
   dashboard() {
@@ -91,11 +87,8 @@ export class ReportService {
           encoding: 'utf8',
         },
       );
-      return HTMLtoDOCX(ejs.render(template, finalReport), null, {
-        table: { row: { cantSplit: true } },
-        footer: true,
-        pageNumber: true,
-      });
+      const renderedTemplate = ejs.render(template, finalReport);
+      return renderedTemplate;
     }
 
     return finalReport;
