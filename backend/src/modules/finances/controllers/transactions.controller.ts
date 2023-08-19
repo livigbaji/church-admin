@@ -12,6 +12,7 @@ import {
   NewTransactionDTO,
   TransferDTO,
 } from '../dtos/transaction.dto';
+import { Auth } from 'src/decorators/permissions.decorator';
 
 @ApiTags('Finances')
 @Controller('/api/transactions')
@@ -31,6 +32,7 @@ export class TransactionsController {
   @ApiCreatedResponse({
     type: CompleteTransaction,
   })
+  @Auth()
   creditOrDebit(
     @Param('txType') txType: 'credit' | 'debit',
     @Body() transaction: NewTransactionDTO,
@@ -49,6 +51,7 @@ export class TransactionsController {
   @ApiCreatedResponse({
     type: CompleteTransfer,
   })
+  @Auth()
   transfer(@Body() transaction: TransferDTO) {
     // TODO add admin session decorator;
     const createdBy = 'todo';

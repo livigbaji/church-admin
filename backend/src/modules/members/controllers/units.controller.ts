@@ -23,6 +23,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Unit } from '../models/unit.model';
+import { Auth } from 'src/decorators/permissions.decorator';
 
 @ApiTags('Unit')
 @Controller('/api/units')
@@ -36,6 +37,7 @@ export class UnitsController {
   @ApiOperation({
     summary: 'Create a unit',
   })
+  @Auth()
   create(@Body() unit: UnitDTO) {
     return this.unitService.create(unit);
   }
@@ -47,6 +49,7 @@ export class UnitsController {
   @ApiOperation({
     summary: 'Get all units',
   })
+  @Auth()
   list() {
     return this.unitService.list();
   }
@@ -63,6 +66,7 @@ export class UnitsController {
     type: String,
     required: false,
   })
+  @Auth()
   getDesignations(@Query('search') search?: string) {
     return this.unitService.getDesignations(search);
   }
@@ -74,6 +78,7 @@ export class UnitsController {
   @ApiOperation({
     summary: 'Update unit details',
   })
+  @Auth()
   updateUnit(@Param('unit') id: string, @Body() unit: UnitDTO) {
     return this.unitService.update(id, unit);
   }
@@ -85,6 +90,7 @@ export class UnitsController {
   @ApiOperation({
     summary: 'Delete unit designation',
   })
+  @Auth()
   deleteUnitDesignation(
     @Param('unit') unit: string,
     @Param('designation') designation: string,
@@ -99,6 +105,7 @@ export class UnitsController {
   @ApiOperation({
     summary: 'update unit designation',
   })
+  @Auth()
   updateDesignation(
     @Param('unit') unit: string,
     @Param('designation') designationId: string,
@@ -114,6 +121,7 @@ export class UnitsController {
   @ApiOperation({
     summary: 'Create a unit designation',
   })
+  @Auth()
   addDesignation(
     @Param('unit') unit: string,
     @Body() designation: UnitDesignationDTO,

@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Member, MemberSchema } from './models/member.model';
 import { LeadershipService } from './services/leadership.service';
@@ -14,6 +14,7 @@ import { BirthdaysController } from './controllers/birthdays.controller';
 import { BirthdaysService } from './services/birthdays.service';
 import { Birthday, BirthdaySchema } from './models/birthday.model';
 import { ConfigsController } from './controllers/configs.controller';
+import { AdminModule } from '../admin/admin.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { ConfigsController } from './controllers/configs.controller';
       { name: Leadership.name, schema: LeaderSchema },
       { name: Birthday.name, schema: BirthdaySchema },
     ]),
+    forwardRef(() => AdminModule),
   ],
   providers: [
     LeadershipService,

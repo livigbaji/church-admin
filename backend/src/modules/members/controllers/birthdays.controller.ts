@@ -23,6 +23,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { Auth } from 'src/decorators/permissions.decorator';
 
 @ApiTags('Birthday')
 @Controller('/api/birthdays')
@@ -36,6 +37,7 @@ export class BirthdaysController {
   @ApiOperation({
     summary: 'Get birthdays occuring this week',
   })
+  @Auth()
   getThisWeekBirthdays() {
     return this.birthdayService.getBirthdaysForWeek();
   }
@@ -52,6 +54,7 @@ export class BirthdaysController {
     required: false,
     description: 'Defaults to this month if empty',
   })
+  @Auth()
   getThisMonthBirthdays(@Query('month') month: number) {
     return this.birthdayService.getBirthdayForMonth(month);
   }
@@ -63,6 +66,7 @@ export class BirthdaysController {
   @ApiOperation({
     summary: 'Get birthdays occuring today',
   })
+  @Auth()
   getTodaysBirthdays() {
     return this.birthdayService.getBirthdaysForToday();
   }
@@ -79,6 +83,7 @@ export class BirthdaysController {
     required: false,
     description: 'Defaults to this month if empty',
   })
+  @Auth()
   getBirthdayRecords(@Query('month') month: number) {
     return this.birthdayService.getCelebrantForms(month);
   }

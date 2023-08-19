@@ -9,6 +9,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Leadership } from '../models/leadership.model';
+import { Auth } from 'src/decorators/permissions.decorator';
 
 @ApiTags('Leadership')
 @Controller('/api/leadership')
@@ -22,6 +23,7 @@ export class LeadershipController {
     summary: 'Make a member a leader (of the unit or a sub-unit)',
   })
   @Post('/')
+  @Auth()
   create(@Body() leadership: LeadershipDTO) {
     return this.leadershipService.create(leadership);
   }
@@ -36,6 +38,7 @@ export class LeadershipController {
     name: 'unit',
     required: false,
   })
+  @Auth()
   @Get('/')
   list(@Query('unit') unit: string) {
     return this.leadershipService.list(unit);

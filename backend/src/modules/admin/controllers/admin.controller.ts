@@ -12,6 +12,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Admin } from '../models/admin.model';
+import { Auth } from 'src/decorators/permissions.decorator';
 
 @ApiTags('Administration')
 @Controller('/api/admins')
@@ -25,6 +26,7 @@ export class AdminController {
   @ApiCreatedResponse({
     type: NewAdminResponse,
   })
+  @Auth()
   add(@Body() newAdmin: NewAdminDTO) {
     return this.adminService.generate(newAdmin);
   }
@@ -36,6 +38,7 @@ export class AdminController {
   @ApiOkResponse({
     type: AdminListResponse,
   })
+  @Auth()
   list() {
     return this.adminService.listAdmins();
   }
@@ -47,6 +50,7 @@ export class AdminController {
   @ApiOperation({
     summary: 'Deactivate admin login access',
   })
+  @Auth()
   deactivate(@Param('admin') admin: string) {
     return this.adminService.deactivate(admin);
   }

@@ -17,7 +17,6 @@ import {
 } from '@nestjs/common';
 import { MembersService } from '../services/members.service';
 import {
-  ApiBearerAuth,
   ApiBody,
   ApiConsumes,
   ApiCreatedResponse,
@@ -35,6 +34,7 @@ import {
 import { Member } from '../models/member.model';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Response } from 'express';
+import { Auth } from 'src/decorators/permissions.decorator';
 
 @ApiTags('Member')
 @Controller('/api/members')
@@ -65,7 +65,7 @@ export class MembersController {
   @ApiOperation({
     summary: 'List unit members',
   })
-  @ApiBearerAuth()
+  @Auth()
   listMembers(
     @Query('search') search: string,
     @Query('limit') limit: string,
@@ -78,7 +78,7 @@ export class MembersController {
   @ApiCreatedResponse({
     type: MemberListResponse,
   })
-  @ApiBearerAuth()
+  @Auth()
   @ApiOperation({
     summary: 'Create a new member to the unit',
   })
@@ -139,6 +139,7 @@ export class MembersController {
   @ApiOperation({
     summary: 'Export all unit members to excel file',
   })
+  @Auth()
   async exportMembers(
     @Res() response: Response,
     @Body() { name }: MemberExportRequest,
@@ -151,7 +152,7 @@ export class MembersController {
   @ApiOkResponse({
     type: Member,
   })
-  @ApiBearerAuth()
+  @Auth()
   @ApiOperation({
     summary: 'Update member information',
   })
