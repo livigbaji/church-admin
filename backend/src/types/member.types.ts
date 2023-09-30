@@ -22,9 +22,3 @@ export class Birthday {
   @ApiProperty()
   month: number;
 }
-
-export enum Permission {
-  ATTENDANCE = 'ATTENDANCE',
-  PERMISSIONS = 'PERMISSIONS',
-  REPORT = 'REPORT',
-}
