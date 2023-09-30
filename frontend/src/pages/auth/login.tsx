@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   function handleClick() {
-    navigate("/enter-password");
+    navigate("/uploadCSVPage");
   }
   return (
     <main className="h-screen w-screen flex justify-center items-center">
