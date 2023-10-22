@@ -63,7 +63,7 @@ export const Header = (props: any) => {
           </form>
         </div>
 
-        <div className="flex items-center gap-3 2xsm:gap-7">
+        <div className="flex items-center gap-3 2xsm:gap-7 z-10 ">
           {/* <!-- User Area --> */}
           <DropdownUser />
           {/* <!-- User Area --> */}
