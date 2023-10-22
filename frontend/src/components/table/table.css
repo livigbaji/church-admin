@@ -1,0 +1,51 @@
+/* table styles */
+.table-style {
+  width: 100%;
+  min-height: auto;
+}
+
+.table-style .table-view table {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.table-style .table-view thead {
+  background: #f4f4f4;
+  height: 47px;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  color: #525252;
+}
+.table-style .table-view th {
+  padding-left: 54px;
+  padding-right: 54px;
+  font-style: normal;
+  fontfamily: "Inter";
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.table-style .table-view tbody tr {
+  height: 73px;
+}
+.table-style .table-view tr:nth-child(even) {
+  background: white;
+}
+.table-style .table-view .ani-scale:hover {
+  transform: scaleY(1.07);
+  border-bottom: 0.5px solid rgba(81.81, 81.81, 81.81, 0.5);
+}
+.table-style .table-view td {
+  border-radius: 0px;
+  padding-left: 54px;
+  padding-right: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  cursor: pointer;
+  color: #464858;
+  white-space: nowrap;
+}

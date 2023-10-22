@@ -73,7 +73,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: any) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-50 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
+      className={`absolute left-0 top-0 z-50 flex h-screen w-[269px] flex-col overflow-y-hidden bg-[#132034] duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -114,15 +114,15 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: any) => {
         <nav className="px-4 py-4 mt-5 lg:mt-9 lg:px-6">
           {/* <!-- Menu Group --> */}
           <div>
-            <ul className="mb-6 flex flex-col gap-1.5 text-white">
+            <ul className="mb-[46px] flex flex-col gap-3 text-white">
               {/* <!-- Menu Item Dashboard --> */}
               {routes.map((route) => (
                 <li key={route.id}>
                   <NavLink
                     to={route.href}
-                    className={`group relative cursor-pointer text-base hover:bg-gray-900 flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out  ${
+                    className={`group relative cursor-pointer text-base hover:bg-gray-900 flex items-center gap-[30px] rounded-sm h-[43px] px-[23px] font-normal duration-300 ease-in-out  ${
                       pathname == route.href.toLocaleLowerCase() &&
-                      "bg-bg_active "
+                      "bg-bg_active"
                     }`}
                   >
                     {route.icon}
@@ -136,14 +136,14 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: any) => {
           </div>
 
           {/* <!-- Others Group --> */}
-          <div className="">
-            <ul className="mb-6 flex flex-col gap-1.5 text-white">
+          <div className="absolute bottom-0">
+            <ul className="flex flex-col gap-3 mb-6 text-white">
               {/* <!-- Menu Item Logout --> */}
 
               <li
                 role="button"
                 onClick={handleLogout}
-                className={`group relative cursor-pointer flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-gray-900`}
+                className={`group relative cursor-pointer flex items-center gap-[30px] rounded-sm py-2 px-[23px] font-medium text-white duration-300 ease-in-out hover:bg-gray-900`}
               >
                 <Logout />
                 Logout

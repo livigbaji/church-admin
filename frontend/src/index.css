@@ -35,3 +35,9 @@ body {
   min-height: 100vh;
   overscroll-behavior: none;
 }
+
+@media screen and (max-width: 648px) {
+  .margin {
+    padding-top: 20px;
+  }
+}

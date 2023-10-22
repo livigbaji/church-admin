@@ -10,20 +10,20 @@ export const DefaultLayout = ({ children }: IDefaultLayoutProps) => {
   return (
     <div className="w-screen">
       {/* <!-- ===== Page Wrapper Start ===== --> */}
-      <div className="flex h-screen overflow-hidden w-full">
+      <div className="flex w-full h-screen overflow-hidden">
         {/* <!-- ===== Sidebar Start ===== --> */}
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}
-        <div className="relative flex flex-1 flex-col w-full overflow-y-auto overflow-x-hidden">
+        <div className="relative flex flex-col flex-1 w-full overflow-x-hidden overflow-y-auto">
           {/* <!-- ===== Header Start ===== --> */}
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           {/* <!-- ===== Header End ===== --> */}
 
           {/* <!-- ===== Main Content Start ===== --> */}
           <main>
-            <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <div className="mx-auto max-w-screen-2xl p-5 lg:p-[45px] 2xl:p-[45px]">
               {children}
             </div>
           </main>
