@@ -17,7 +17,7 @@ function App() {
       <>
         <Routes>
           <Route path="/" index element={<Login />} />
-          <Route path="uploadCSVPage" element={<UploadCSVPage />} />
+          <Route path="/init" element={<UploadCSVPage /> }/>
           <Route path="/enter-password" element={<EnterPassword />} />
 
           <Route path="/dashboard" element={<Dashboard />}>

@@ -69,12 +69,16 @@ const UploadCSVPage: React.FC = () => {
           Select a file or drag and drop it here.
         </p>
 
-        <input
+
+
+    <input
           type="file"
           accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
           onChange={handleFileUpload}
           className="w-full p-2 mb-4 border border-gray-300 rounded-md"
         />
+
+        
 
         <div
           className="drag-drop-area w-full p-6 border border-dashed border-gray-300 rounded-md text-center cursor-pointer"
