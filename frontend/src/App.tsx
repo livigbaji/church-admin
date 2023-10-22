@@ -1,4 +1,5 @@
 import "./App.css";
+import UploadCSVPage from "./pages/auth/uploadCSVPage";
 import EnterPassword from "./pages/auth/enter-password";
 import Login from "./pages/auth/login";
 import Dashboard from "./pages/dashboard";
@@ -16,6 +17,7 @@ function App() {
       <>
         <Routes>
           <Route path="/" index element={<Login />} />
+          <Route path="/init" element={<UploadCSVPage /> }/>
           <Route path="/enter-password" element={<EnterPassword />} />
 
           <Route path="/dashboard" element={<Dashboard />}>
