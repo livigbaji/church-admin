@@ -22,6 +22,7 @@ import {
   NewCategoryDTO,
 } from '../dtos/category.dto';
 import { Category } from '../models/category.model';
+import { Auth } from 'src/decorators/permissions.decorator';
 
 @ApiTags('Finances')
 @Controller('/api/categories')
@@ -35,6 +36,7 @@ export class CategoriesController {
   @ApiOperation({
     summary: 'Create new category for finance record tracking',
   })
+  @Auth()
   create(@Body() category: NewCategoryDTO) {
     return this.categoriesService.create(category, 'todo');
   }
@@ -50,6 +52,7 @@ export class CategoriesController {
   @ApiOkResponse({
     type: CategoryList,
   })
+  @Auth()
   get(@Query('search') search: string) {
     return this.categoriesService.list(search);
   }
@@ -61,6 +64,7 @@ export class CategoriesController {
   @ApiOperation({
     summary: 'Get category details and transactions',
   })
+  @Auth()
   getOne(@Param('category') category: string) {
     return this.categoriesService.transactions(category);
   }
@@ -72,6 +76,7 @@ export class CategoriesController {
   @ApiOperation({
     summary: 'Delete category as long as it has no transactions',
   })
+  @Auth()
   delete(@Param('category') category: string) {
     return this.categoriesService.delete(category);
   }
@@ -83,6 +88,7 @@ export class CategoriesController {
   @ApiOperation({
     summary: 'Update category details',
   })
+  @Auth()
   update(@Param('category') category: string, @Body() updates: NewCategoryDTO) {
     return this.categoriesService.update(category, updates);
   }

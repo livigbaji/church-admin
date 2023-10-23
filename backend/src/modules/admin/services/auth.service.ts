@@ -1,12 +1,13 @@
 import {
   BadRequestException,
   Injectable,
+  NotAcceptableException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { authenticator } from 'otplib';
-import { NewAuthDTO } from '../dtos/auth.dto';
+import { GenesisResponse, NewAuthDTO } from '../dtos/auth.dto';
 import { Admin, AdminDocument } from '../models/admin.model';
 import { Login, LoginDocument } from '../models/login.model';
 import { MembersService } from 'src/modules/members/services/members.service';
@@ -28,7 +29,28 @@ export class AuthService {
     private readonly configSerivce: ConfigService,
   ) {}
 
+  isEmpty(): Promise<boolean> {
+    return this.adminModel
+      .countDocuments({
+        active: true,
+      })
+      .then((count) => !count);
+  }
+
+  async checkGenesis(): Promise<GenesisResponse> {
+    return {
+      adminIsEmpty: await this.isEmpty(),
+      memberIsEmpty: await this.memberService.isEmpty(),
+    } as GenesisResponse;
+  }
+
   async start(newAuth: NewAuthDTO, ip: string, device: string) {
+    const isGenesis = await this.checkGenesis();
+    if (Object.values(isGenesis).some((val) => val)) {
+      throw new NotAcceptableException(
+        'Application is pristine, setup members import and add a new admin',
+      );
+    }
     const member = await this.memberService
       .findByPhone(newAuth.phone)
       .then((result) => {
@@ -127,7 +149,7 @@ export class AuthService {
           return result;
         });
 
-      return this.memberService.findOne(session.member.toString());
+      return this.memberService.findOne(session.member.toString()).exec();
     } catch (e) {
       throw new UnauthorizedException(
         'Cannot complete request. Please login again',

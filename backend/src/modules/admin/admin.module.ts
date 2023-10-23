@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { AdminController } from './controllers/admin.controller';
 import { AuthController } from './controllers/auth.controller';
 import { AuthService } from './services/auth.service';
@@ -19,10 +19,11 @@ import { ReportSchema, Report } from './models/report.model';
       { name: Login.name, schema: LoginSchema },
       { name: Report.name, schema: ReportSchema },
     ]),
-    MembersModule,
-    AttendanceModule,
+    forwardRef(() => MembersModule),
+    forwardRef(() => AttendanceModule),
   ],
   controllers: [AdminController, AuthController, ReportsController],
   providers: [AuthService, AdminService, ReportService],
+  exports: [AuthService],
 })
 export class AdminModule {}

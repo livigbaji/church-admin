@@ -1,10 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-  IsBoolean,
   IsNotEmpty,
   IsOptional,
   IsPhoneNumber,
   IsString,
+  Length,
 } from 'class-validator';
 import { Member } from 'src/modules/members/models/member.model';
 
@@ -13,12 +13,13 @@ export class NewAuthDTO {
   @IsNotEmpty()
   @IsString()
   @ApiProperty({
-    format: '2349012345678',
+    example: '2349012345678',
   })
   readonly phone: string;
 
-  @IsBoolean()
+  @IsString()
   @IsOptional()
+  @Length(6)
   @ApiProperty({
     example: '123456',
   })
@@ -51,4 +52,28 @@ export class LoggedInuser {
   token: string;
   @ApiProperty()
   expiresAt: Date;
+}
+
+export class GenesisResponse {
+  @ApiProperty()
+  adminIsEmpty: boolean;
+
+  @ApiProperty()
+  memberIsEmpty: boolean;
+}
+
+export class GeneisErrorResponse {
+  @ApiProperty({
+    example: 406,
+  })
+  statusCode: number;
+  @ApiProperty({
+    example:
+      'Application is pristine, setup members import and add a new admin',
+  })
+  message: string;
+  @ApiProperty({
+    example: 'Not Acceptable',
+  })
+  error: number;
 }

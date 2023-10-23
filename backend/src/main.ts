@@ -20,6 +20,7 @@ async function bootstrap() {
     .setTitle('Church Admin API')
     .setDescription('Church Admin Webservice')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);

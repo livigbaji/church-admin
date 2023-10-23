@@ -15,6 +15,10 @@ export class MembersService {
     private readonly memberModel: Model<MemberDocument>,
   ) {}
 
+  isEmpty(): Promise<boolean> {
+    return this.memberModel.countDocuments().then((count) => !count);
+  }
+
   search(skip = 0, limit = 1000, search?: string) {
     console.log({ search });
     return this.memberModel

@@ -16,6 +16,7 @@ import {
   CreateAttendance,
 } from '../dtos/create-attendance.dto';
 import { Attendance } from '../models/attendance.model';
+import { Auth } from 'src/decorators/permissions.decorator';
 
 @ApiTags('Attendance')
 @Controller('/api/attendances')
@@ -26,6 +27,7 @@ export class AttendanceController {
   @ApiOkResponse({
     type: AttendanceCalendarView,
   })
+  @Auth()
   getCalendarView(@Query('month') month: string, @Query('year') year: string) {
     return this.attendanceService.getMonthView(month, year);
   }
@@ -34,6 +36,7 @@ export class AttendanceController {
   @ApiOkResponse({
     type: AttendanceResponse,
   })
+  @Auth()
   list(@Query('month') month: string, @Query('year') year: string) {
     return this.attendanceService.list(month, year);
   }
@@ -42,6 +45,7 @@ export class AttendanceController {
   @ApiOkResponse({
     type: AttendanceResponse,
   })
+  @Auth()
   listMemberAttendance(@Param('member') member: string) {
     return this.attendanceService.listMemberAttendance(member);
   }
@@ -50,6 +54,7 @@ export class AttendanceController {
   @ApiCreatedResponse({
     type: Attendance,
   })
+  @Auth()
   create(@Body() attendance: CreateAttendance) {
     return this.attendanceService.createAttendance(attendance);
   }
@@ -58,6 +63,7 @@ export class AttendanceController {
   @ApiOkResponse({
     type: Attendance,
   })
+  @Auth()
   updateDesignation(
     @Param('attendance') attendance: string,
     @Body() designation: CreateAttendance,
@@ -69,6 +75,7 @@ export class AttendanceController {
   @ApiOkResponse({
     type: Attendance,
   })
+  @Auth()
   removeDesignation(
     @Param('attendance') attendance: string,
     @Param('designation') designation: string,

@@ -17,6 +17,7 @@ import {
   ApiProduces,
   ApiTags,
 } from '@nestjs/swagger';
+import { Auth } from 'src/decorators/permissions.decorator';
 const downloadFormat =
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 
@@ -38,6 +39,7 @@ export class ReportsController {
   })
   @ApiProduces(downloadFormat)
   @Header('Content-Disposition', 'attachment; filename="weekly-report.docx"')
+  @Auth()
   async weeklyAttendance(@Res() response: Response) {
     response.contentType(downloadFormat);
     response.download(await this.reportService.weeklyAttendance());
@@ -50,6 +52,7 @@ export class ReportsController {
     summary: 'Dashboard statistics',
   })
   @Get('/dashboard')
+  @Auth()
   dashboard() {
     return this.reportService.dashboard();
   }
@@ -71,6 +74,7 @@ export class ReportsController {
   })
   @ApiProduces(downloadFormat)
   @Header('Content-Disposition', 'attachment; filename="deacon-report.docx"')
+  @Auth()
   async downloadDeaconReport(
     @Res() response: Response,
     @Param('month') month: string,
@@ -94,6 +98,7 @@ export class ReportsController {
   @ApiOperation({
     summary: 'Get Deacon assembly report for the month',
   })
+  @Auth()
   deaconReport(@Param('month') month: string) {
     return this.reportService.deaconReport(false, month);
   }
@@ -109,6 +114,7 @@ export class ReportsController {
   @ApiOperation({
     summary: 'Create or update Deacon assembly report for the month',
   })
+  @Auth()
   modifyDeaconReport(@Body() report: ReportDTO, @Param('month') month: string) {
     return this.reportService.modifyDeaconReport(report, month);
   }
