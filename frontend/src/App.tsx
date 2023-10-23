@@ -1,4 +1,3 @@
-import "./App.css";
 import EnterPassword from "./pages/auth/enter-password";
 import Login from "./pages/auth/login";
 import Dashboard from "./pages/dashboard";
